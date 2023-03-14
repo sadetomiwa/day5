@@ -52,8 +52,11 @@ HAVING store_id = 1;
 
 --9. How many payment amounts (4.99, 5.99, etc.) had a number of rentals above 250 for customers with ids between 380 and 430? (use group by and having > 250)------
 
-SELECT *
-FROM payment;
+SELECT  customer_id,SUM(rental_id), COUNT(amount)
+FROM payment 
+WHERE customer_id BETWEEN 380 AND 430
+GROUP BY customer_id
+HAVING SUM(rental_id) > 250;
 
 
 
